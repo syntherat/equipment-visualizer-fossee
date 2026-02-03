@@ -67,6 +67,11 @@ The application follows a **client-server architecture**:
 
 ## 🚀 Quick Start
 
+### Prerequisites
+- Python 3.8+
+- Node.js 14+
+- Git
+
 ### 1️⃣ Backend Setup (3 minutes)
 
 ```bash
@@ -77,13 +82,10 @@ venv\Scripts\activate      # Windows
 
 pip install -r requirements.txt
 python manage.py migrate
-python manage.py createsuperuser
-# Username: admin, Password: admin123
-
 python manage.py runserver
 ```
 
-The backend API will be available at `http://localhost:8000`
+Backend runs on `http://localhost:8000`
 
 ### 2️⃣ Web Frontend Setup (2 minutes)
 
@@ -93,7 +95,12 @@ npm install
 npm start
 ```
 
-Open `http://localhost:3000` in your browser
+Frontend runs on `http://localhost:3000`
+
+**Local development uses `.env.local`** (created automatically):
+```
+REACT_APP_API_URL=http://localhost:8000
+```
 
 ### 3️⃣ Desktop App Setup (1 minute)
 
@@ -103,18 +110,23 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## 📊 Sample Data
+The desktop app automatically connects to `http://localhost:8000`
 
-Use the provided `sample_equipment_data.csv` to test:
-- 25 chemical equipment items
-- 3 equipment types (Pump, Tank, Reactor)
-- Random flowrate, pressure, temperature values
-- Ready for upload in both web and desktop versions
+## 🧪 Testing with Sample Data
 
-## 🔑 Default Credentials
+Use `sample_equipment_data.csv` to test all features:
+1. Start backend and frontend
+2. Open web app at `http://localhost:3000`
+3. Upload the CSV file
+4. View charts, tables, and download PDF report
+5. Try the desktop app too - it connects to the same backend
 
-- **Username**: `admin`
-- **Password**: `admin123`
+## ❌ No Authentication Required
+
+- **Demo mode**: All endpoints work without login
+- **Fallback user**: Requests use "demo" user automatically
+- **CSRF disabled**: For development simplicity
+- **CORS enabled**: Frontend and desktop communicate freely with backend
 
 ## 📁 Project Structure
 

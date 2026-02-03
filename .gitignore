@@ -1,5 +1,7 @@
-# Python
-__pycache__/
+# Environment files
+.env
+.env.local
+.env.*.local
 *.py[cod]
 *$py.class
 *.so
@@ -53,5 +55,3 @@ yarn-error.log*
 # OS
 Thumbs.db
 .DS_Store
-
-DEPLOYMENT_GUIDE.md
