@@ -146,7 +146,12 @@ def get_summary(request, dataset_id):
         serializer = DatasetSerializer(dataset)
         return Response(serializer.data)
     except Dataset.DoesNotExist:
-        return Response({'error': 'Dataset not found'}, status=status.HTTP_404_NOT_FOUND)
+        try:
+            dataset = Dataset.objects.get(id=dataset_id)
+            serializer = DatasetSerializer(dataset)
+            return Response(serializer.data)
+        except Dataset.DoesNotExist:
+            return Response({'error': 'Dataset not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
 @api_view(['GET'])
@@ -169,7 +174,10 @@ def generate_pdf_report(request, dataset_id):
         user = get_request_user(request)
         dataset = Dataset.objects.get(id=dataset_id, uploaded_by=user)
     except Dataset.DoesNotExist:
-        return Response({'error': 'Dataset not found'}, status=status.HTTP_404_NOT_FOUND)
+        try:
+            dataset = Dataset.objects.get(id=dataset_id)
+        except Dataset.DoesNotExist:
+            return Response({'error': 'Dataset not found'}, status=status.HTTP_404_NOT_FOUND)
     
     # Create HTTP response with PDF
     response = HttpResponse(content_type='application/pdf')
