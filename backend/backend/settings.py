@@ -125,6 +125,5 @@ CORS_ALLOWED_ORIGINS = [
     "https://equipment-visualizer-fossee.onrender.com",
 ]
 
-# For demo simplicity, allow all origins
-CORS_ALLOW_ALL_ORIGINS = True
+# Do NOT use wildcard with CORS_ALLOW_CREDENTIALS - explicitly list origins above
 CORS_ALLOW_CREDENTIALS = False
