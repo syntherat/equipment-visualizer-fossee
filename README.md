@@ -27,8 +27,8 @@ The application follows a **client-server architecture**:
              └──────────────┬────────────────┘
                             │
                   ┌─────────▼────────┐
-                  │ Django REST API │
-                  │ (localhost:8000)│
+                  │ Django REST API  │
+                  │ (localhost:8000) │
                   └─────────┬────────┘
                             │
                   ┌─────────▼────────┐
@@ -195,13 +195,6 @@ Response includes:
 - **Web**: lucide-react (professional, consistent icon set)
 - **Desktop**: Text labels (simple, clean)
 
-## 📖 Documentation
-
-For detailed technical documentation, API specifications, and development guides, see:
-- **[DOCUMENTATION.md](./DOCUMENTATION.md)** - Complete technical guide
-- **[QUICKSTART.md](./QUICKSTART.md)** - Quick reference guide
-- **[SETUP_GUIDE.md](./SETUP_GUIDE.md)** - Detailed setup instructions
-
 ## 🔄 Data Flow
 
 ### CSV Upload Process
@@ -289,8 +282,6 @@ For production deployment:
 3. **Database**: Replace SQLite with PostgreSQL
 4. **Environment**: Set `DEBUG=False`, configure `ALLOWED_HOSTS`
 
-See [DOCUMENTATION.md](./DOCUMENTATION.md) for detailed deployment steps.
-
 ## 📄 License
 
 This project is provided as-is for educational purposes.
@@ -314,16 +305,8 @@ Pull requests welcome! Please ensure:
 - [ ] Trend analysis and forecasting
 - [ ] Mobile app version
 
-## 📞 Support
-
-For issues or questions:
-1. Check [DOCUMENTATION.md](./DOCUMENTATION.md)
-2. Review [QUICKSTART.md](./QUICKSTART.md)
-3. Check existing GitHub issues
-4. Create a new issue with detailed description
-
 ---
 
 **Version**: 1.0  
-**Last Updated**: February 2024  
+**Last Updated**: February 2026  
 **Status**: Production Ready ✅
