@@ -23,7 +23,25 @@ function Dashboard({ username, onLogout }) {
   const fetchHistory = async () => {
     try {
       const response = await axios.get('/api/history/');
-      setHistory(response.data);
+      const historyData = response.data;
+      setHistory(historyData);
+
+      if (currentDataset) {
+        const exists = historyData.some((ds) => ds.id === currentDataset.id);
+        if (!exists) {
+          if (historyData.length > 0) {
+            try {
+              const latest = historyData[0];
+              const latestResponse = await axios.get(`/api/summary/${latest.id}/`);
+              setCurrentDataset(latestResponse.data);
+            } catch (err) {
+              setCurrentDataset(null);
+            }
+          } else {
+            setCurrentDataset(null);
+          }
+        }
+      }
     } catch (error) {
       console.error('Failed to fetch history:', error);
     }
@@ -67,6 +85,9 @@ function Dashboard({ username, onLogout }) {
       link.remove();
       window.URL.revokeObjectURL(url);
     } catch (error) {
+      if (error.response?.status === 404) {
+        fetchHistory();
+      }
       console.error('Failed to download PDF:', error);
     }
   };
